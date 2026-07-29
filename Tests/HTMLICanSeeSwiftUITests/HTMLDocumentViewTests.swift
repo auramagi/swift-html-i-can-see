@@ -57,6 +57,7 @@ struct HTMLDocumentViewTests {
     func rendererStyle() {
         let style = HTMLDocumentStyle(
             blockSpacing: 18,
+            paragraphAlignment: .center,
             listItemSpacing: 7,
             nestedListSpacing: 9,
             listIndentation: 24,
@@ -70,6 +71,7 @@ struct HTMLDocumentViewTests {
 
         requireRendererSendable(HTMLDocumentStyle.self)
         #expect(style.blockSpacing == 18)
+        #expect(style.paragraphAlignment == .center)
         #expect(style.listIndentation == 24)
         #expect(style.unorderedListMarker == "◦")
         #expect(style.linkColor == .purple)

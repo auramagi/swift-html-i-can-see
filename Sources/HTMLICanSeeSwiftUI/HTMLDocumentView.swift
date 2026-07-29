@@ -48,9 +48,26 @@ private struct HTMLBlockView: View {
         switch block {
         case let .paragraph(content):
             HTMLInlineText(content: content, style: style)
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .multilineTextAlignment(style.paragraphAlignment)
+                .frame(
+                    maxWidth: .infinity,
+                    alignment: style.paragraphAlignment.frameAlignment
+                )
         case let .list(list):
             HTMLListView(list: list, style: style)
+        }
+    }
+}
+
+private extension TextAlignment {
+    var frameAlignment: Alignment {
+        switch self {
+        case .leading:
+            .leading
+        case .center:
+            .center
+        case .trailing:
+            .trailing
         }
     }
 }

@@ -8,6 +8,7 @@ import SwiftUI
 /// layout, Dynamic Type, accessibility, and right-to-left behavior.
 public struct HTMLDocumentStyle: Hashable, Sendable {
     public var blockSpacing: CGFloat
+    public var paragraphAlignment: TextAlignment
     public var listItemSpacing: CGFloat
     public var nestedListSpacing: CGFloat
     public var listIndentation: CGFloat
@@ -20,6 +21,7 @@ public struct HTMLDocumentStyle: Hashable, Sendable {
 
     public init(
         blockSpacing: CGFloat = 12,
+        paragraphAlignment: TextAlignment = .leading,
         listItemSpacing: CGFloat = 6,
         nestedListSpacing: CGFloat = 6,
         listIndentation: CGFloat = 20,
@@ -31,6 +33,7 @@ public struct HTMLDocumentStyle: Hashable, Sendable {
         underlinesLinks: Bool = false
     ) {
         self.blockSpacing = blockSpacing
+        self.paragraphAlignment = paragraphAlignment
         self.listItemSpacing = listItemSpacing
         self.nestedListSpacing = nestedListSpacing
         self.listIndentation = listIndentation
