@@ -1,0 +1,87 @@
+name: Apple platforms
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test with minimum Apple toolchain
+    runs-on: macos-26
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.0.1.app/Contents/Developer
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Toolchain
+        run: swift --version
+
+      - name: Test
+        run: swift test
+
+  simulator-test:
+    name: Test on ${{ matrix.name }}
+    runs-on: macos-26
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.5.app/Contents/Developer
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: iOS
+            destination: platform=iOS Simulator,name=iPhone 17 Pro,OS=26.5
+          - name: tvOS
+            destination: platform=tvOS Simulator,name=Apple TV,OS=26.5
+          - name: watchOS
+            destination: platform=watchOS Simulator,name=Apple Watch Series 11 (46mm),OS=26.5
+          - name: visionOS
+            destination: platform=visionOS Simulator,name=Apple Vision Pro,OS=26.5
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Test complete package
+        run: |
+          xcodebuild \
+            -scheme swift-html-i-can-see \
+            -destination "${{ matrix.destination }}" \
+            -parallel-testing-enabled NO \
+            test
+
+  build-tests:
+    name: Build tests for ${{ matrix.name }}
+    runs-on: macos-26
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_26.0.1.app/Contents/Developer
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: iOS
+            destination: generic/platform=iOS Simulator
+          - name: tvOS
+            destination: generic/platform=tvOS Simulator
+          - name: watchOS
+            destination: generic/platform=watchOS Simulator
+          - name: visionOS
+            destination: generic/platform=visionOS Simulator
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Build complete package and test targets
+        run: |
+          xcodebuild \
+            -scheme swift-html-i-can-see \
+            -destination "${{ matrix.destination }}" \
+            build-for-testing

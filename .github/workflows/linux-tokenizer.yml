@@ -1,0 +1,34 @@
+name: Linux tokenizer
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  tokenizer:
+    runs-on: ubuntu-24.04
+    container: swift:6.2.4-jammy
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Toolchain
+        run: swift --version
+
+      - name: Verify pinned generated data and fixtures
+        run: |
+          Tools/GenerateNamedCharacterReferences/generate.sh
+          git diff --exit-code -- Sources/HTMLICanSeeTokenizer/Generated/HTMLNamedCharacterReferences.swift
+          cd Tests/HTMLICanSeeTokenizerTests/Fixtures/html5lib-tests
+          sha256sum --check SHA256SUMS
+
+      - name: Build tokenizer
+        run: swift build --target HTMLICanSeeTokenizer
+
+      - name: Test tokenizer
+        run: swift test --filter HTMLICanSeeTokenizerTests
