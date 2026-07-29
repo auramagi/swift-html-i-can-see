@@ -1,0 +1,41 @@
+[
+  {
+    "type": "doctype",
+    "doctype": {
+      "name": "html",
+      "publicIdentifier": "-//Example//DTD HTML 1.0//EN",
+      "systemIdentifier": "https://example.com/example.dtd",
+      "forceQuirks": true
+    }
+  },
+  {
+    "type": "startTag",
+    "name": "a",
+    "attributes": [
+      {
+        "name": "href",
+        "value": "https://example.com/path"
+      },
+      {
+        "name": "title",
+        "value": "Example"
+      }
+    ],
+    "selfClosing": false
+  },
+  {
+    "type": "endTag",
+    "name": "a"
+  },
+  {
+    "type": "comment",
+    "data": "comment"
+  },
+  {
+    "type": "character",
+    "data": "visible text"
+  },
+  {
+    "type": "eof"
+  }
+]

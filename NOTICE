@@ -1,0 +1,59 @@
+swift-html-i-can-see
+====================
+
+Original work
+-------------
+
+Copyright (c) 2026 Mike Apurin.
+
+Original source code and documentation are licensed under the MIT License in
+LICENSE.
+
+WHATWG named character references
+---------------------------------
+
+The checked-in entities dataset and generated Swift lookup table are derived
+from the WHATWG HTML Standard's named character references:
+
+  Source: https://html.spec.whatwg.org/entities.json
+  Retrieved: 2026-07-30 (Asia/Tokyo)
+  Upstream HTTP Last-Modified: 2025-11-12 00:20:03 GMT
+  SHA-256: d741d877ac77c4194c4ad526b5b4a19aef8dfe411ab840a466891cdbb9f362e6
+  HTML Standard revision:
+    https://github.com/whatwg/html/commit/b94ff8886e9afdcc761fcb1565d1488976fa60ba
+
+This is the latest revision before WHATWG commit
+320c05f679e2e0795acde90d0704caf7ade03fdc added processing-instruction
+tokens and states. Processing instructions are outside this package's pinned
+public token model.
+
+Copyright © WHATWG (Apple, Google, Mozilla, Microsoft).
+
+The dataset is preserved verbatim in
+Tools/GenerateNamedCharacterReferences/entities.json. Its representation is
+converted deterministically into
+Sources/HTMLICanSeeTokenizer/Generated/HTMLNamedCharacterReferences.swift.
+WHATWG licenses the standard under Creative Commons Attribution 4.0
+International and, to the extent portions are incorporated into source code,
+under the BSD 3-Clause License. The complete upstream license is retained in
+LICENSES/WHATWG-HTML.txt.
+
+html5lib tokenizer fixtures
+---------------------------
+
+The tokenizer conformance fixtures are imported from html5lib-tests:
+
+  Source: https://github.com/html5lib/html5lib-tests/tree/224991ec10db04f056a89eed8b0bd8695fd2950e/tokenizer
+  Revision: 224991ec10db04f056a89eed8b0bd8695fd2950e
+  Retrieved: 2026-07-30 (Asia/Tokyo)
+
+Copyright (c) 2006-2013 James Graham, Geoffrey Sneddon, and other
+contributors. The fixtures are licensed under the MIT License. Their license
+and contributor list are retained in:
+
+  LICENSES/html5lib-tests.txt
+  LICENSES/html5lib-tests-AUTHORS.rst
+
+The imported fixture contents are unmodified. The upstream tokenizer README is
+renamed FORMAT.md locally. SHA256SUMS records the checksum of every imported
+file.
