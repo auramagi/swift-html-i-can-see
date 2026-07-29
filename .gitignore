@@ -1,0 +1,6 @@
+.build/
+.build-benchmark/
+.DS_Store
+DerivedData/
+Package.resolved
+xcuserdata/
