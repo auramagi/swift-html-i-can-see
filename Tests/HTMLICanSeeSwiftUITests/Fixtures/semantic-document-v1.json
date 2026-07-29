@@ -1,0 +1,97 @@
+{
+  "blocks": [
+    {
+      "content": [
+        {
+          "style": {
+            "bold": true,
+            "italic": false,
+            "link": "https://example.com/path",
+            "strikethrough": false
+          },
+          "text": "Hello",
+          "type": "text"
+        },
+        {
+          "type": "lineBreak"
+        },
+        {
+          "style": {
+            "bold": false,
+            "italic": true,
+            "strikethrough": true
+          },
+          "text": "world",
+          "type": "text"
+        }
+      ],
+      "type": "paragraph"
+    },
+    {
+      "list": {
+        "items": [
+          {
+            "parts": [
+              {
+                "content": [
+                  {
+                    "style": {
+                      "bold": false,
+                      "italic": false,
+                      "strikethrough": false
+                    },
+                    "text": "One",
+                    "type": "text"
+                  }
+                ],
+                "type": "inlines"
+              },
+              {
+                "list": {
+                  "items": [
+                    {
+                      "parts": [
+                        {
+                          "content": [
+                            {
+                              "style": {
+                                "bold": false,
+                                "italic": true,
+                                "strikethrough": false
+                              },
+                              "text": "Nested",
+                              "type": "text"
+                            }
+                          ],
+                          "type": "inlines"
+                        }
+                      ]
+                    }
+                  ],
+                  "style": "unordered"
+                },
+                "type": "list"
+              },
+              {
+                "content": [
+                  {
+                    "style": {
+                      "bold": false,
+                      "italic": false,
+                      "strikethrough": false
+                    },
+                    "text": "After",
+                    "type": "text"
+                  }
+                ],
+                "type": "inlines"
+              }
+            ]
+          }
+        ],
+        "style": "ordered"
+      },
+      "type": "list"
+    }
+  ]
+}
