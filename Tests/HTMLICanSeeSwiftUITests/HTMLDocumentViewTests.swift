@@ -46,8 +46,10 @@ struct HTMLDocumentViewTests {
         let data = Data(#"{"blocks":[]}"#.utf8)
         let document = try JSONDecoder().decode(HTMLDocument.self, from: data)
         let view = HTMLDocumentView(document)
+            .frame(width: 100, height: 100)
+        let renderer = ImageRenderer(content: view)
 
-        _ = view.body
+        _ = try #require(renderer.cgImage)
         #expect(document.blocks.isEmpty)
     }
 
