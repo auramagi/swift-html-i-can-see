@@ -1,5 +1,8 @@
 # HTML I Can See
 
+> [!WARNING]
+> This project is the result of some vibe coding sessions, and the source code is mostly unreviewed. Use at your own peril.
+
 `swift-html-i-can-see` is a dependency-free Swift package for turning HTML into
 a WHATWG-oriented token stream, a small persistent semantic document, and a
 native SwiftUI view.
